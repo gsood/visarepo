@@ -15,7 +15,7 @@ public class GoogleSearchTestRunner {
 	public void runStories() {
 		Embedder embedder = new GoogleSearchEmbedder();
 		
-		System.setProperty("webdriver.chrome.driver", "C:/users/gsood/AppData/chromeWebDriver");
+		System.setProperty("webdriver.chrome.driver", this.getClass().getClassLoader().getResource("chromedriver.exe").getPath());
 		List<String> storyPaths = new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"), "**/*.story", "");
 		embedder.runStoriesAsPaths(storyPaths);;
 	}

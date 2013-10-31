@@ -1,6 +1,6 @@
 package infrastructure.driver;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -28,13 +28,14 @@ public enum WebPage {
 	
 	public void gotoPage(String url) {
 		webDriver.get(url);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='main']")));
 	}
 
 	public void searchFor(String searchTerm) {
 		WebElement searchBox = webDriver.findElement(By.xpath("//input[@name='q']"));
 		searchBox.sendKeys(searchTerm);
 		searchBox.sendKeys(Keys.RETURN);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='res']")));
 	}
 	
 
@@ -51,7 +52,7 @@ public enum WebPage {
 	}
 
 	public void assertPageUrl(String url) {
-		assertThat(webDriver.getCurrentUrl(), equals(url));
+		assertEquals(webDriver.getCurrentUrl(), url);
 	}
 
 	public void elementWithXPathExists(String xpath) {

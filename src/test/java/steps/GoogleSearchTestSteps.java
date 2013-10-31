@@ -31,17 +31,17 @@ public class GoogleSearchTestSteps {
 	
 	@Then("user gets results")
 	public void resultsFound() {
-		page.elementWithXPathExists("div[@id='search']//ol[@id='rso']/li");
+		page.elementWithXPathExists("//div[@id='search']//ol[@id='rso']/li");
 	}
 
 	@Then("search result on position $position is $resultString")
 	public void checkSearchResultOnPosition(int position, String resultString) {
-		page.elementWithXPathContainsText("div[@id='search']//ol[@id='rso']/li[" + position+ "]//em", resultString);
+		page.elementWithXPathContainsText("//div[@id='search']//ol[@id='rso']/li[" + position+ "]//em", resultString);
 	}
 	
 	@When("user clicks on search result number $position")
 	public void clickOnResultAndWaitForResultPagetoLoad(int position) {
-		page.clickOnElementWithXPathAndWaitForXPath("div[@id='search']/div/ol/li[" + position+ "]//em");
+		page.clickOnElementWithXPathAndWaitForXPath("//div[@id='search']/div/ol/li[" + position+ "]//em");
 		
 	}
 
