@@ -67,6 +67,9 @@ public enum WebPage {
 	}
 
 	
+	public void destroyChromeDriver() {
+		webDriver.quit();
+	}
 	
 	
 	

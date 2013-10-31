@@ -2,6 +2,7 @@ package steps;
 
 import infrastructure.driver.WebPage;
 
+import org.jbehave.core.annotations.AfterStory;
 import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -19,6 +20,11 @@ public class GoogleSearchTestSteps {
 		page  = WebPage.CHROME_DRIVER;
 	}
 
+	@AfterStory
+	public void afterStory() {
+		page.destroyChromeDriver();
+	}
+	
 	@Given("user is on page $url")
 	public void loadStartPage(String url) {
 		page.gotoPage(url);
