@@ -1,3 +1,4 @@
+package junit;
 import java.util.List;
 
 import org.jbehave.core.embedder.Embedder;
@@ -13,6 +14,8 @@ public class GoogleSearchTestRunner {
 	@Test
 	public void runStories() {
 		Embedder embedder = new GoogleSearchEmbedder();
+		
+		System.setProperty("webdriver.chrome.driver", "C:/users/gsood/AppData/chromeWebDriver");
 		List<String> storyPaths = new StoryFinder().findPaths(CodeLocations.codeLocationFromPath("src/test/resources"), "**/*.story", "");
 		embedder.runStoriesAsPaths(storyPaths);;
 	}
